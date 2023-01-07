@@ -4,7 +4,7 @@ class holaMundo {
         saludar(); //este es codigo con error, se alojará en rama main
     }
 
-    public void saludar(){
-        console.log("");
+    public static void saludar(){
+        System.out.println();
     }
 }
