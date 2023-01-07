@@ -1,4 +1,4 @@
-package intro-git;
+//package intro-git;
 
 class Modelo {
     private String nombre;
