@@ -1,12 +1,55 @@
+body {
+    margin: 0;
+}
+
+main {
+    background: #202328;
+}
+
+header {
+    height: 65vh;
+}
+
+header img {
+    height: 100%;
+    width: 100%;
+}
+
+#section-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* se repite en 2 columnas por 1 fraccion */
+}
+
 .card {
     border: 1px solid black;
     width: 500px;
-    height: 190px;
+    height: 210px;
     border-radius: 10px;
     overflow: hidden; /*oculta todo lo que se sale del contenedor */
     display: flex;
+    margin: 20px;
+    box-shadow: 0 0 10px 0 rgb(8, 195, 224);
 }
 
 .card img {
     height: 100%; /*Acceder a la imagen */
 }
+
+.body-card {
+    width: 55%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #3b3e43;
+    color: white;
+}
+
+.body-card:hover {
+    background: rgb(233, 175, 68);
+    cursor: pointer;
+}
+
+
+
