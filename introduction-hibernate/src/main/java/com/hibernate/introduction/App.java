@@ -17,7 +17,8 @@ public class App {
     public static void main( String[] args ){
         PersonaController controller = new PersonaController();
         PersonaView view = new PersonaView(controller);
-        view.crearPersona();
+        //view.crearPersona();
+        view.mostrarPersonas();
     }    
 }
 
