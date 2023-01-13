@@ -50,7 +50,9 @@ public class PersonaView {
     }
 
     public void buscarPersona() {
-
+        int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Por favor ingrese el id de lapersona a obtener"));
+        String info = controller.obtenerPersonaXId(id);
+        JOptionPane.showInputDialog(null, info);
     }
 
     public void eliminarPersona() {

@@ -44,6 +44,21 @@ public class PersonaController {
         return create;
     }
 
+    //OBTENER PERSONAS POR ID
+    public String obtenerPersonaXId (int id){
+        String personaStr = "";
+        Session session = crearSession();
+
+        try {
+            Persona persona = session.find(Persona.class, id);
+            personaStr = persona.toString();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return personaStr;
+    }
+
     //LISTAR PERSONAS
     public List<String> obtenerPersonas(){
         List<Persona> personas = new ArrayList<>(); 
