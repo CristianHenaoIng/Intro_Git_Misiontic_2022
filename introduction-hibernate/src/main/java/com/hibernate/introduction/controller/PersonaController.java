@@ -1,7 +1,7 @@
 package com.hibernate.introduction.controller;
 
-//import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -28,7 +28,7 @@ public class PersonaController {
     }
 
     // ACCIONES
-    public boolean crearPersona (String nombre, String apellido, String email, java.util.Date fecha_nacimiento, String foto){
+    public boolean crearPersona (String nombre, String apellido, String email, Calendar fecha_nacimiento, String foto){
         boolean create = false;
         Session session = factory.openSession();
         session.beginTransaction();
@@ -50,6 +50,7 @@ public class PersonaController {
         Session session = crearSession();
         try {
             personas = session.createQuery("from Persona", Persona.class).list();
+            session.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,5 +64,40 @@ public class PersonaController {
         }
         return personasStr;
     }
+
+    // ACTUALIZAR PERSONA
+    // Necesitamos capturar  los datos de la persona
+    public String actualizarPersona(int id, String nombre, String apellido, String email, Calendar fecha_naci, String foto){
+        Session session = crearSession();
+        String message = "";
+        try {
+            Persona persona = session.find(Persona.class, id);
+            persona.setNombre(nombre);
+            persona.setApellido(apellido);
+            persona.setEmail(email);
+            persona.setFecha_nacimiento(fecha_naci);
+            persona.setFoto(foto);
+            
+            session.merge(persona);
+            session.getTransaction().commit();
+            session.close();
+            message = "Persona actualizada con éxito";
+        } catch (Exception e) {
+            e.printStackTrace();
+            message = e.getMessage();
+        }
+        return message;
+    }
+
+    public Calendar stringtoCalendar(String fecha){
+        String[] dateString = fecha.split("/");
+        int year = Integer.parseInt(dateString[2]);
+        int month = Integer.parseInt(dateString[1]) - 1;
+        int date = Integer.parseInt(dateString[0]);
+        Calendar fechaCalendar = Calendar.getInstance();
+        fechaCalendar.set(year, month, date);
+        return fechaCalendar;
+    }
+
 }
 

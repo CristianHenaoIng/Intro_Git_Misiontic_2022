@@ -1,6 +1,6 @@
 package com.hibernate.introduction.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 //import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ public class Persona {
     private String email;
     // @Column(name="fecha_nacimiento")
     // Si los atributos se llaman diferente a la columna se usa @column referenciando el nombre d ela columna que esta referenciando ese atributo
-    private Date fecha_nacimiento;
+    private Calendar fecha_nacimiento;
     private String foto;
 
     //CONSTRUCTORES
@@ -30,7 +30,7 @@ public class Persona {
         }
 
         //el que permite crear una entidad con parametros - datos
-        public Persona(String nombre, String apellido, String email, Date fecha_nacimiento, String foto) {
+        public Persona(String nombre, String apellido, String email, Calendar fecha_nacimiento, String foto) {
             // asignacion a los atributos, los parametros se llaman igual que los atributos
             //por medio del this se diferencian los atributos de los parametros
             this.nombre = nombre;
@@ -71,7 +71,7 @@ public class Persona {
             return email;
         }
 
-        public Date getFecha_nacimiento(){
+        public Calendar getFecha_nacimiento(){
             return fecha_nacimiento;
         }
 
@@ -93,7 +93,7 @@ public class Persona {
             this.email = email;
         }
 
-        public void setFecha_nacimiento(Date fecha_nacimiento) {
+        public void setFecha_nacimiento(Calendar fecha_nacimiento) {
             this.fecha_nacimiento = fecha_nacimiento;
         }
 

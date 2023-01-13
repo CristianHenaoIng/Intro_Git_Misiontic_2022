@@ -18,7 +18,8 @@ public class App {
         PersonaController controller = new PersonaController();
         PersonaView view = new PersonaView(controller);
         //view.crearPersona();
-        view.mostrarPersonas();
+        //view.mostrarPersonas();
+        view.actualizarPersona();
     }    
 }
 
