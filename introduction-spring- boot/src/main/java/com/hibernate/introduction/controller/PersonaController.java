@@ -9,8 +9,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hibernate.introduction.model.Persona;
@@ -75,6 +77,48 @@ public class PersonaController {
         return message;
     }
 
+    @PutMapping
+    // ACTUALIZAR PERSONA
+    // Necesitamos capturar  los datos de la persona
+    //public String actualizarPersona(@RequestParam int id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String email, @RequestParam Calendar fecha_naci, @RequestParam String foto){
+    public String actualizarPersona(@RequestBody Persona persona){
+        Session session = crearSession();
+        String message = "";
+        try {
+            /* Persona persona = session.find(Persona.class, id);
+            persona.setNombre(nombre);
+            persona.setApellido(apellido);
+            persona.setEmail(email);
+            persona.setFecha_nacimiento(fecha_naci);
+            persona.setFoto(foto); */
+
+            session.merge(persona);
+            session.getTransaction().commit();
+            session.close();
+            message = "Persona actualizada con éxito";
+        } catch (Exception e) {
+            e.printStackTrace();
+            message = e.getMessage();
+        }
+        return message;
+    }
+
+    public String eliminarPersona (@RequestBody Persona persona){
+        String message = "";
+        Session session = crearSession();
+        try {
+            session.remove(persona);
+            session.getTransaction().commit();
+            session.close();
+            message = "Persona eliminada con éxito";
+        } catch (Exception e) {
+            message = e.getMessage();
+        }
+        return message;
+    }
+
+
+
     //OBTENER PERSONAS POR ID
     public String obtenerPersonaXId (int id){
         String personaStr = "";
@@ -89,7 +133,6 @@ public class PersonaController {
         }
         return personaStr;
     }
-
     
     public List<String> objtoString (List<Persona> personas){
         List<String> personasStr = new ArrayList<>();
@@ -97,30 +140,6 @@ public class PersonaController {
             personasStr.add(personas.get(i).toString());
         }
         return personasStr;
-    }
-
-    // ACTUALIZAR PERSONA
-    // Necesitamos capturar  los datos de la persona
-    public String actualizarPersona(int id, String nombre, String apellido, String email, Calendar fecha_naci, String foto){
-        Session session = crearSession();
-        String message = "";
-        try {
-            Persona persona = session.find(Persona.class, id);
-            persona.setNombre(nombre);
-            persona.setApellido(apellido);
-            persona.setEmail(email);
-            persona.setFecha_nacimiento(fecha_naci);
-            persona.setFoto(foto);
-            
-            session.merge(persona);
-            session.getTransaction().commit();
-            session.close();
-            message = "Persona actualizada con éxito";
-        } catch (Exception e) {
-            e.printStackTrace();
-            message = e.getMessage();
-        }
-        return message;
     }
 
     public Calendar stringtoCalendar(String fecha){
