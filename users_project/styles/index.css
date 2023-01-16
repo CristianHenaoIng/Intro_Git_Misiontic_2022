@@ -32,7 +32,10 @@ td {
 }
 
 /* #section-carousel{
-    padding: 50px;
+    padding: 50px; 
 }
  */
 
+table tbody tr td img{
+    width: 100px;
+}
