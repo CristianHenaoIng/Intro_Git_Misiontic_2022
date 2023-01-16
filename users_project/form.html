@@ -27,8 +27,12 @@
     <!--Cabecera-->
     <header>
         <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="cont-center"> <!--Para centrar el contenido-->
+                <a href="/index.html" class="btn btn-primary">Home</a>
+            </div>
             <h2 class="titulo"> Crear usuario</h2>
             <!-- Navbar content -->
+            
         </nav>
     </header>
 
@@ -37,26 +41,27 @@
         <!--Formulario-->
         <!--Contenedor de formulario-->
         <section id="form-create-user">
-            <form>
+            <form onsubmit="get_data_form(event)">
             <label for="input_nombre" class="form-label">Nombre*: </label>
-            <input id="input_nombre" class="form-control" type="text" placeholder="Mi nombre" required/>
-            <label for="input_apellido" class="form-label">Apellido*: </label>
-            <input id="input_apellido" class="form-control" type="text" placeholder="Mi Apellido" required/>
-            <label for="input_email" class="form-label">Email*: </label>
-            <input id="input_email" class="form-control" type="email" placeholder="Mi Email" required/>
-            <label for="input_fecha_nacimiento" class="form-label">Fecha de nacimiento*:</label>
-            <input id="input_fecha_nacimiento" class="form-control" type="date" required/>
-            <label for="input_foto" class="form-label">Foto: </label>
-            <input id="input_foto" class="form-control" type="file" />
+            <input id="input_nombre" class="form-control" type="text" placeholder="Mi nombre" name="nombre"/> <!--Required al final-->
+            <label for="input_apellido" class="form-label">Apellido*: </label> <!--Required al final-->
+            <input id="input_apellido" class="form-control" type="text" placeholder="Mi Apellido" name="apellido"/> <!--Required al final-->
+            <label for="input_email" class="form-label">Email*: </label> <!--Required al final-->
+            <input id="input_email" class="form-control" type="email" placeholder="Mi Email" name="email"/> <!--Required al final-->
+            <label for="input_fecha_nacimiento" class="form-label">Fecha de nacimiento*:</label> <!--Required al final-->
+            <input id="input_fecha_nacimiento" class="form-control" type="date" name="fecha_nacimiento" /> <!--Required al final-->
+            <label for="input_foto" class="form-label">Foto: </label> 
+            <input id="input_foto" class="form-control" type="file" name="foto"/>
             <!--Boton de crear-->
             <div id="boton-crear">
                 <button class = "btn btn-primary" type="submit">Crear</button>
-            </div>
-            
-            
+            </div>       
             </form>
+            
         </section>
     </main>
 </body>
 
+<!--Cargar scripts-->
+<script src="./scripts/form.js"></script>
 </html>
