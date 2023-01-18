@@ -14,7 +14,7 @@ async function get_users(url){
 
 function show_users (users){
     // Referenciar tabla
-    const table = document.getElementById("table") // conn el id que tiene en el html la variable si puede ser llamada diferente
+    const table = document.getElementById("tbody") // conn el id que tiene en el html la variable si puede ser llamada diferente
     let tbody = "<tbody>"
     //Iterar useres
     for (let i = 0; i < users.length; i++){
@@ -31,13 +31,25 @@ function show_users (users){
                 <td>${arrayDate[0]}</td>
                 <td>
                     <button class="btn btn-warning" onclick = 'update (${obj})'>Actualizar</button>
-                    <button class="btn btn-danger">Eliminar</button>
+                    <button class="btn btn-danger" onclick = 'delete_person(${users[i].id})'>Eliminar</button>
                 </td>
             </tr>
         `
     }
     tbody += "</tbody>"
-    table.innerHTML += tbody
+    table.innerHTML = tbody
+}
+
+async function delete_person(id){
+    //console.log("Voy a eliminar ->", id)
+    // Se pone el Cross Origin para que deje conectar los puertos en el servidor
+    const resp = await fetch(`${url}/${id}`, {// el delete lo reibe como valor desde el hibernate- servidor en controller por eso concatenamos
+        method:'DELETE' 
+    })
+    const text = await resp.text()
+    alert (text)
+    // Llamamos el main para quue recargue todos los datos nuevamente
+    main()
 }
 
 async function update(persona){
