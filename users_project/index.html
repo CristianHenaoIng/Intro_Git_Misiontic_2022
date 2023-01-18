@@ -25,9 +25,23 @@
 <body>
     <!--Cabecera-->
     <header>
-        <nav class="navbar bg-primary" data-bs-theme="dark">
-            <h2 class="titulo"> Usuarios registrados</h2>
+        <nav class=" navbar navbar-expand- navbar-light bg-primary data-bs-toggle=" dark>
+            <!--<h2 class="titulo"> Usuarios registrados</h2>-->
             <!-- Navbar content -->
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">USUARIOS GRUPO 42</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="form.html">Registrar usuario</a>
+                    </div>
+                </div>
+            </div>
         </nav>
 
     </header>
@@ -61,7 +75,7 @@
         </section>
         <!--Contenedor de la tabla-->
         <div id="cont-table">
-            <table class="table" id = "table">
+            <table class="table" id="table">
                 <!--Titulos de las columnas-->
                 <thead>
                     <tr>
@@ -97,11 +111,31 @@
             </table>
         </div>
         <!--Boton para crear usuario-->
-        <div id="crear-usuario">
+        <!-- <div id="crear-usuario">
             <a href="form.html" class="btn btn-primary"> Crear usuario</a>
+        </div> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar persona</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Desea eliminar al usuario <span id ="span-persona"></span>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="delete_person()">Si, deseo eliminar</button>
+                    </div>
+                </div> 
+            </div>
         </div>
     </main>
     <!-- Scripts-->
     <script src="./scripts/index.js"></script>
 </body>
+
 </html>
